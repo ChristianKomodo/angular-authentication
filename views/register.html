@@ -1,0 +1,29 @@
+<section class="card register">
+	<form name="myform" ng-submit="register()" novalidate>
+		
+		<div class="textintro">
+			<h1>Hi there!</h1>
+			<p>Log in to access the site.</p>
+			<p class="message" ng-show="message">{{ message }}</p>
+			<!-- <p>Pristine? {{ myform.email.$pristine }}</p>
+			<p>Touched? {{ myform.email.$touched }}</p>
+			<p>Valid? {{ myform.email.$valid }}</p>
+			<p>Dirty? {{ myform.email.$dirty }}</p> -->
+		</div>
+
+		<fieldset>
+			<input type="text" name="firstname" placeholder="First Name" ng-model="user.firstname" ng-required="true">
+			<p class="error validationerror" ng-show="myform.firstname.$touched && myform.firstname.$invalid">Please enter a First Name</p>
+			<input type="text" name="lastname" placeholder="Last Name" ng-model="user.lastname" ng-required="true">
+			<p class="error validationerror" ng-show="myform.lastname.$touched && myform.lastname.$invalid">Please enter a Last Name</p>
+			<input type="email" name="email" placeholder="email" ng-model="user.email" ng-required="true">
+			<p class="error validationerror" ng-show="myform.email.$touched && myform.email.$invalid">Must be a valid email address</p>
+			<input type="password" name="password" placeholder="Password" ng-model="user.password" ng-required="true">
+			<p class="error validationerror" ng-show="myform.password.$touched && myform.password.$invalid">Password is required</p>
+		</fieldset>
+
+		<button type="submit" class="btn" ng-disabled="myform.$invalid">Register</button>
+		<p>or <a ng-href="#!/login">log in</a></p>
+
+	</form>
+</section>
