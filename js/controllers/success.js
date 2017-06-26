@@ -1,5 +1,5 @@
 myApp.controller('SuccessController', ['$scope', function($scope){
 
-	$scope.message="Success controller works";
+	// $scope.message="Success controller works";
 
 }]);
