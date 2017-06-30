@@ -1,12 +1,14 @@
 var myApp = angular.module('myApp', ['ngRoute', 'firebase']);
 
+myApp.factory("Auth", ["$firebaseAuth",
+  function($firebaseAuth) {
+    return $firebaseAuth();
+  }
+]);
+
 myApp.run(['$rootScope', '$location', function($rootScope, $location){
-	console.log('run is run!');
 	$rootScope.$on('$routeChangeError', function(event, next, previous, error) {
-		// console.log(event);
-		console.log(next);
-		console.log(previous);
-		console.log("error is: ", error);
+		// console.log("error is: ", error);
 		if (error == 'AUTH_REQUIRED') {
 			$rootScope.message = 'Sorry, you must log in to access that page';
 			$location.path('/login');

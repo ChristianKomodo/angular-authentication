@@ -1,8 +1,7 @@
-myApp.factory('Authentication', ['$rootScope', '$firebaseObject', '$location', '$firebaseAuth', function($rootScope, $firebaseObject, $location, $firebaseAuth){
+myApp.factory('Authentication', ['$rootScope', '$firebaseObject', '$location', '$firebaseAuth', 'Auth', function($rootScope, $firebaseObject, $location, $firebaseAuth, Auth){
 
 	var ref = firebase.database().ref();
 	var auth = firebase.auth();
-	console.log("Right after defining it, auth is ", auth);
 
 	auth.onAuthStateChanged(function(authUser){
 		if (authUser) {
@@ -16,8 +15,6 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseObject', '$location', '
 
 	return {
 		login: function(user) {
-			console.log("login says auth.requireSignIn is ", auth.requireSignIn);
-			console.log("login says auth.signInWithEmailAndPassword is ", auth.signInWithEmailAndPassword);
 			auth.signInWithEmailAndPassword(
 				user.email,
 				user.password
@@ -38,9 +35,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseObject', '$location', '
 		},
 
 		requireAuth: function() {
-			console.log("requireAuth says auth.requireSignIn is ", auth.requireSignIn);
-			console.log("requireAuth says auth is ", auth);
-			return auth.requireSignIn();
+			return Auth.$requireSignIn();
 		},
 
 		register: function(user) {
