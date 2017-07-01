@@ -28,7 +28,8 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseObject', '$location', '
 		logout: function() {
 			console.log("logout says auth is ", auth);
 			return auth.signOut().then(function() {
-				console.log("signed out");
+				console.error("Even though we logged out, $rootScope.currentUser is still ", $rootScope.currentUser);
+				// $rootScope.currentUser = null;
 			}).catch(function(error) {
 				console.log(error);
 			});

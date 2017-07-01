@@ -1,11 +1,15 @@
 myApp.controller('SuccessController', ['$scope', '$firebaseObject', function($scope, $firebaseObject){
 
-	var database = firebase.database();
+	// var rootRef = firebase.database().ref().child('siteData');
+	// var ref = rootRef.child('title');
+	// $scope.siteData = $firebaseObject(ref);
+	// // then do <pre> {{ siteData | json }} </pre>
 
-	var starCountRef = firebase.database().ref('siteData').child('title');
-	starCountRef.on('value', function(snapshot) {
-		console.log("siteData snapshot is ", snapshot);
-		$scope.title = snapshot.val();
+	var ref = firebase.database().ref().child('siteData');
+	ref.on("value", function(snapshot) {
+		$scope.$apply(function() {
+			$scope.siteData = snapshot.val();
+		});
 	});
 
 }]);
