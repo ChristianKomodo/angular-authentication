@@ -486,7 +486,7 @@ nav ul li.user.hello {
   padding: 10px 15px;
 }
 
-nav ul li a {
+nav ul li a, nav ul li p {
   float: left;
   text-decoration: none;
   padding: 10px 15px;

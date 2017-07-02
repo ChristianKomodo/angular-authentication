@@ -4,6 +4,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseObject', '$location', '
 	var auth = firebase.auth();
 
 	auth.onAuthStateChanged(function(authUser){
+		// console.log("onAuthStateChanged");
 		if (authUser) {
 			var userRef = ref.child('users').child(authUser.uid);
 			var userObj = $firebaseObject(userRef);
@@ -26,9 +27,8 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseObject', '$location', '
 		},
 
 		logout: function() {
-			console.log("logout says auth is ", auth);
 			return auth.signOut().then(function() {
-				console.error("Even though we logged out, $rootScope.currentUser is still ", $rootScope.currentUser);
+				// console.error("Even though we logged out, $rootScope.currentUser is still ", $rootScope.currentUser);
 				// $rootScope.currentUser = null;
 			}).catch(function(error) {
 				console.log(error);
